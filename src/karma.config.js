@@ -7,7 +7,11 @@
 const path = require('path');
 const envify = require('loose-envify/custom');
 
+let chromeFlags = [];
 process.env.CHROME_BIN = require('puppeteer').executablePath();
+if (process.env.TRAVIS) {
+  chromeFlags = ['--no-sandbox'];
+}
 
 module.exports = function(config) {
   config.set({
@@ -142,8 +146,15 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['ChromeHeadless'],
+    browsers: ['Chrome_Puppeteer'],
     browserNoActivityTimeout: 20000, // Travis is slow...
+
+    customLaunchers: {
+      Chrome_Puppeteer: {
+        base: 'ChromeHeadless',
+        flags: chromeFlags,
+      },
+    },
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
