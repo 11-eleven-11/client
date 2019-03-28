@@ -65,7 +65,8 @@ node {
 
     stage('Test') {
         puppeteerEnv.inside("-e HOME=${workspace} -e JENKINS=1") {
-            sh 'apt-get update && apt-get install make'
+            sh 'whoami' // TESTING
+            sh 'sudo apt-get update && apt-get install make'
             sh 'make test'
         }
     }
