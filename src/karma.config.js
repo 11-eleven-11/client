@@ -9,7 +9,7 @@ const envify = require('loose-envify/custom');
 
 let chromeFlags = [];
 process.env.CHROME_BIN = require('puppeteer').executablePath();
-if (process.env.TRAVIS) {
+if (process.env.TRAVIS || process.env.JENKINS) {
   chromeFlags = ['--no-sandbox'];
 }
 

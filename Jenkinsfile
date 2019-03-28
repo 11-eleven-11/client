@@ -3,7 +3,13 @@
 node {
     checkout scm
 
+    // A basic Node environment, suitable for deploying releases.
     nodeEnv = docker.image("node:10-stretch")
+
+    // A Node environment with Puppeteer (headless Chrome) pre-installed,
+    // for running tests.
+    puppeteerEnv = docker.image("buildkite/puppeteer:v1.13.0")
+
     workspace = pwd()
 
     // Tag used when deploying to NPM.
@@ -58,7 +64,7 @@ node {
     echo "Building and testing ${newPkgVersion}"
 
     stage('Test') {
-        nodeEnv.inside("-e HOME=${workspace}") {
+        puppeteerEnv.inside("-e HOME=${workspace} -e JENKINS=1") {
             sh 'make test'
         }
     }
