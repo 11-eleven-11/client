@@ -148,6 +148,10 @@ const update = {
     return { focusedAnnotationMap: action.focused };
   },
 
+  SET_FOCUSED_MODE: function(state, action) {
+    return { focusedMode: action.focusedMode };
+  },
+
   SET_FORCE_VISIBLE: function(state, action) {
     return { forceVisible: action.forceVisible };
   },
@@ -297,6 +301,16 @@ function setFilterQuery(query) {
   };
 }
 
+/**
+ * Set the focused to only show annotations by the focused user.
+ */
+function setFocusedMode(focused) {
+  return {
+    type: actions.SET_FOCUSED_MODE,
+    focusedMode: focused,
+  };
+}
+
 /** Sets the sort key for the annotation list. */
 function setSortKey(key) {
   return {
@@ -372,6 +386,7 @@ module.exports = {
     selectTab: selectTab,
     setCollapsed: setCollapsed,
     setFilterQuery: setFilterQuery,
+    setFocusedMode: setFocusedMode,
     setForceVisible: setForceVisible,
     setSortKey: setSortKey,
     toggleSelectedAnnotations: toggleSelectedAnnotations,

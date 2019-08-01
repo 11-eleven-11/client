@@ -10,9 +10,6 @@ function hostPageConfig(window) {
   const configJSON = queryString.parse(window.location.search).config;
   const config = JSON.parse(configJSON || '{}');
 
-  // temp: hack to force user
-  config.focusedUser = 'kyle';
-
   // Known configuration parameters which we will import from the host page.
   // Note that since the host page is untrusted code, the filtering needs to
   // be done here.

@@ -24,6 +24,7 @@ function configFrom(window_) {
       'enableExperimentalNewNoteButton'
     ),
     group: settings.group,
+    focusedUser: settings.hostPageSetting('focusedUser'),
     theme: settings.hostPageSetting('theme'),
     usernameUrl: settings.hostPageSetting('usernameUrl'),
     onLayoutChange: settings.hostPageSetting('onLayoutChange'),

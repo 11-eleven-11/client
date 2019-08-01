@@ -126,7 +126,9 @@ function SidebarContentController(
   );
 
   this.showFocusedHeader = () => {
-    return store.getState().focusedMode;
+    // Always show the focused header if there is a focused
+    // user name from the config settings object.
+    return !!settings.focusedUser;
   };
 
   this.showSelectedTabs = function() {

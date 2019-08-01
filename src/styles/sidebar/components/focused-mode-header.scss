@@ -1,6 +1,14 @@
 .focused-mode-header {
-  padding: 5px;
-  .focused-mode-header__user {
-    font-weight: 800;
+  margin-bottom: 10px;
+  button {
+    width: 100%;
+    height: 24px;
+    margin-right: 10px;
+    &:focus {
+      outline: none;
+    }
+  }
+  .focused-mode-header__inactive {
+    background-color: $grey-4;
   }
 }

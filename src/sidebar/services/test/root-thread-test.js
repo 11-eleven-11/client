@@ -28,6 +28,7 @@ describe('rootThread', function() {
   let fakeStore;
   let fakeBuildThread;
   let fakeSearchFilter;
+  let fakeSettings;
   let fakeViewFilter;
 
   let $rootScope;
@@ -71,6 +72,8 @@ describe('rootThread', function() {
       generateFacetedFilter: sinon.stub(),
     };
 
+    fakeSettings = {};
+
     fakeViewFilter = {
       filter: sinon.stub(),
     };
@@ -79,6 +82,7 @@ describe('rootThread', function() {
       .module('app', [])
       .value('store', fakeStore)
       .value('searchFilter', fakeSearchFilter)
+      .value('settings', fakeSettings)
       .value('viewFilter', fakeViewFilter)
       .service('rootThread', rootThreadFactory);
 
